@@ -4,7 +4,6 @@ outlinejs-babel-jsxgettext
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Downloads][downloads-image]][downloads-url]
-[![js-standard-style][standard-image]][standard-url]
 
 A tool like [jsxgettext](https://www.npmjs.com/package/jsxgettext), but works for `es6` + `jsx` that babel support.
 
@@ -47,11 +46,11 @@ Install globally with npm `npm install outlinejs-babel-jsxgettext -g`
     -o | --output              String - The path of the output PO file
 
   Usage
-    $ babel-jsxgettext --help
-    $ babel-jsxgettext <input> <output>
+    $ outlinejs-babel-jsxgettext --help
+    $ outlinejs-babel-jsxgettext <input> <output>
 
   Examples
-    $ babel-jsxgettext ./test/*.js ./test.po
+    $ outlinejs-babel-jsxgettext ./test/*.js ./test.po
 ```
 
 
