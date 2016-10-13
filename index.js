@@ -5,6 +5,7 @@ var babylon = require('babylon')
 var walk = require('acorn/dist/walk')
 
 var functionNames = require('./lib/constant').DEFAULT_FUNCTION_NAMES
+var objectPropertyNames = require('./lib/constant').DEFAULT_OBJECT_PROPERTY_NAMES
 var DEFAULT_HEADERS = require('./lib/constant').DEFAULT_HEADERS
 var BABEL_FEATURES = require('./lib/constant').BABEL_FEATURES
 var jsxBase = require('./lib/base')
@@ -58,23 +59,23 @@ function parser (inputs, output, cb) {
 
           node.properties.forEach(function (property) {
             if (property.key.type === 'Literal') {
-              var propertyValue = property.key.rawValue;
-              
+              var propertyValue = property.key.rawValue
+
               objectPropertyNames.forEach(function (objectPropertyName) {
                 if (propertyValue.indexOf(objectPropertyName) === 0) {
                   var line = node.loc.start.line
-                  
+
                   translate['msgid'] = propertyValue
-                  translate['msgstr'] = propertyValue.replace(objectPropertyName, '');
+                  translate['msgstr'] = propertyValue.replace(objectPropertyName, '')
                   translate['comments'] = {
                     reference: file + ':' + line
                   }
-                  
-                  context[translate.msgid] = translate                  
+
+                  context[translate.msgid] = translate
                 }
-              });
+              })
             }
-          });
+          })
         },
 
         CallExpression: function (node) {
