@@ -1,4 +1,4 @@
-babel-jsxgettext
+outlinejs-babel-jsxgettext
 ================
 
 [![NPM version][npm-image]][npm-url]
@@ -13,13 +13,13 @@ I have a blog post explain my translation workflow in an [Electron app with Reac
 ### Usage
 
 ```
-$ npm install babel-jsxgettext --save-dev
+$ npm install outlinejs-babel-jsxgettext --save-dev
 ```
 
 ### API
 
 ```JavaScript
-var parser = require('babel-jsxgettext')
+var parser = require('outlinejs-babel-jsxgettext')
 
 /**
  * The parser function
@@ -35,7 +35,7 @@ parser(inputs, output, function (err) {
 
 ### Command line usage
 
-Install globally with npm `npm install babel-jsxgettext -g`
+Install globally with npm `npm install outlinejs-babel-jsxgettext -g`
 
 ```
   A tool like jsxgettext, but works for es6 + jsx that babel support
@@ -64,11 +64,9 @@ I'm Using Babel with React + JSX for most of my project, but there's no perfect 
 ### License
 MIT
 
-[npm-image]: https://img.shields.io/npm/v/babel-jsxgettext.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/babel-jsxgettext
-[travis-image]: https://img.shields.io/travis/fraserxu/babel-jsxgettext/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/fraserxu/babel-jsxgettext
-[downloads-image]: http://img.shields.io/npm/dm/babel-jsxgettext.svg?style=flat-square
-[downloads-url]: https://npmjs.org/package/babel-jsxgettext
-[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
-[standard-url]: https://github.com/feross/standard
+[npm-image]: https://img.shields.io/npm/v/outlinejs-babel-jsxgettext.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/outlinejs-babel-jsxgettext
+[travis-image]: https://img.shields.io/travis/outlinejs/outlinejs-babel-jsxgettext/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/outlinejs/outlinejs-babel-jsxgettext
+[downloads-image]: http://img.shields.io/npm/dm/outlinejs-babel-jsxgettext.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/outlinejs-babel-jsxgettext
