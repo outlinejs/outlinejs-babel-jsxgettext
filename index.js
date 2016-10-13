@@ -52,6 +52,31 @@ function parser (inputs, output, cb) {
       })
 
       walk.simple(ast.program, {
+        ObjectExpression: function (node) {
+          var translate = {}
+          var context = defaultContext
+
+          node.properties.forEach(function (property) {
+            if (property.key.type === 'Literal') {
+              var propertyValue = property.key.rawValue;
+              
+              objectPropertyNames.forEach(function (objectPropertyName) {
+                if (propertyValue.indexOf(objectPropertyName) === 0) {
+                  var line = node.loc.start.line
+                  
+                  translate['msgid'] = propertyValue
+                  translate['msgstr'] = propertyValue.replace(objectPropertyName, '');
+                  translate['comments'] = {
+                    reference: file + ':' + line
+                  }
+                  
+                  context[translate.msgid] = translate                  
+                }
+              });
+            }
+          });
+        },
+
         CallExpression: function (node) {
           if (functionNames.hasOwnProperty(node.callee.name) ||
             node.callee.property && functionNames.hasOwnProperty(node.callee.property.name)) {
