@@ -1,7 +1,7 @@
 {
-  "name": "babel-jsxgettext",
-  "version": "0.2.0",
-  "description": "A tool like jsxgettext, but works for es6 + jsx that babel support",
+  "name": "outlinejs-babel-jsxgettext",
+  "version": "0.3.0",
+  "description": "A tool like jsxgettext, but works for es6 + jsx that babel support.",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fraserxu/babel-jsxgettext.git"
+    "url": "git+https://github.com/outlinejs/outlinejs-babel-jsxgettext.git"
   },
   "keywords": [
     "i18n",
@@ -32,9 +32,9 @@
   "author": "Fraser Xu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fraserxu/babel-jsxgettext/issues"
+    "url": "https://github.com/outlinejs/outlinejs-babel-jsxgettext/issues"
   },
-  "homepage": "https://github.com/fraserxu/babel-jsxgettext#readme",
+  "homepage": "https://github.com/outlinejs/outlinejs-babel-jsxgettextt#readme",
   "dependencies": {
     "acorn": "^2.4.0",
     "babylon": "^5.8.23",
