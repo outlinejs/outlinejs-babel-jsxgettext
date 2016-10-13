@@ -54,7 +54,6 @@ function parser (inputs, output, cb) {
 
       walk.simple(ast.program, {
         ObjectExpression: function (node) {
-          var translate = {}
           var context = defaultContext
 
           node.properties.forEach(function (property) {
@@ -63,12 +62,15 @@ function parser (inputs, output, cb) {
 
               objectPropertyNames.forEach(function (objectPropertyName) {
                 if (propertyValue.indexOf(objectPropertyName) === 0) {
-                  var line = node.loc.start.line
+                  var translate = {}
+
+                  var line = property.loc.start.line
+                  var column = property.loc.start.column
 
                   translate['msgid'] = propertyValue
                   translate['msgstr'] = propertyValue.replace(objectPropertyName, '')
                   translate['comments'] = {
-                    reference: file + ':' + line
+                    reference: file + ', line: ' + line + ', column: ' + column
                   }
 
                   context[translate.msgid] = translate
@@ -94,9 +96,11 @@ function parser (inputs, output, cb) {
 
                 if (value) {
                   var line = node.loc.start.line
+                  var column = node.loc.start.column
+
                   translate[name] = value
                   translate['comments'] = {
-                    reference: file + ':' + line
+                    reference: file + ', line: ' + line + ', column: ' + column
                   }
                 }
 
