@@ -58,10 +58,34 @@ function parser (inputs, output, cb) {
 
           node.properties.forEach(function (property) {
             if (property.key.type === 'Literal') {
-              var propertyValue = property.key.rawValue
+              // "cast" rawValue to a string
+              var propertyValue = property.key.rawValue + ''
 
               objectPropertyNames.forEach(function (objectPropertyName) {
-                if (propertyValue.indexOf(objectPropertyName) === 0) {
+                // check if there are more occurrence of objectPropertyName and the
+                // string is splittable by /
+                var regex = new RegExp(objectPropertyName, 'g' );
+
+                if (((propertyValue.match(regex) || []).length) > 1 && (propertyValue.split('/').length > 1)) {
+                  propertyValue.split(objectPropertyName).forEach(function (pathValue) {
+                    if (pathValue === '') {
+                      return;
+                    }
+
+                    var translate = {}
+
+                    var line = property.loc.start.line
+                    var column = property.loc.start.column
+
+                    translate['msgid'] = objectPropertyName + pathValue.replace(/\/$/, '')
+                    translate['msgstr'] = pathValue.replace(/\/$/, '')
+                    translate['comments'] = {
+                      reference: file + ', line: ' + line + ', column: ' + column
+                    }
+
+                    context[translate.msgid] = translate
+                  });
+                } else if (propertyValue.indexOf(objectPropertyName) === 0) {
                   var translate = {}
 
                   var line = property.loc.start.line
