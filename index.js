@@ -64,12 +64,12 @@ function parser (inputs, output, cb) {
               objectPropertyNames.forEach(function (objectPropertyName) {
                 // check if there are more occurrence of objectPropertyName and the
                 // string is splittable by /
-                var regex = new RegExp(objectPropertyName, 'g' );
+                var regex = new RegExp(objectPropertyName, 'g')
 
                 if (((propertyValue.match(regex) || []).length) > 1 && (propertyValue.split('/').length > 1)) {
                   propertyValue.split(objectPropertyName).forEach(function (pathValue) {
                     if (pathValue === '') {
-                      return;
+                      return
                     }
 
                     var translate = {}
@@ -84,7 +84,7 @@ function parser (inputs, output, cb) {
                     }
 
                     context[translate.msgid] = translate
-                  });
+                  })
                 } else if (propertyValue.indexOf(objectPropertyName) === 0) {
                   var translate = {}
 
